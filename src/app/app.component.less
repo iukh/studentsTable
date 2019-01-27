@@ -1,0 +1,197 @@
+.filter {
+  text-align: center;
+  margin: 10px auto;
+}
+.input {
+  display: inline-block;
+}
+.input p {
+  margin: 0;
+  padding-bottom: 5px;
+  border: 1px solid black;
+  background-color: #cdced0;
+  color: black;
+}
+.search {
+  text-align: center;
+  margin: 10px;
+}
+.search input,
+.filter input {
+  padding: 10px;
+  margin: 0;
+}
+.filter input[type="text"] {
+  padding: 13px;
+}
+.search button{
+  margin: 0;
+  background-color: #cdced0;
+  border: none;
+  padding: 12px;
+  color: black;
+}
+table {
+  border: 1px solid black;
+  text-align: center;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: white;
+  font-size: 18px;
+}
+table th {
+  background-color: #278215;
+  padding: 15px;
+  color: white;
+  font-size: 18px;
+}
+table tr:hover {
+  // background-color: grey;
+  border: 2px solid #278215;
+  background-color: #96c58c33;
+}
+table tr {
+  border: 1px solid black;
+  padding: 5px;
+}
+button {
+  margin: 0px;
+  background-color: #a03939;
+  color: white;
+  padding: 10px 15px;
+}
+
+.confirmationPopOp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 20%;
+  background-color: white;
+  border: 1px solid black;
+  width: 400px;
+  height: 100px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  z-index: 6;
+}
+.overlay {
+  position: fixed;
+  background-color: black;
+  z-index: 3;
+  opacity: 0.7;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.cancel {
+  background-color: grey;
+}
+p {
+  font-size: 20px;
+}
+.swith {
+  position: relative;
+  text-align: center;
+  border: 1px solid #278215;
+  height: 100px;
+  width: 400px;
+  margin: 50px auto;
+}
+
+.textFilter {
+  width: 220px;
+  display: inline-block;
+  position: relative;
+  font-size: 20px;
+  margin-left: 20px;
+  font-weight: 800;
+}
+.gpaFilter {
+  width: 120px;
+  display: inline-block;
+  position: relative;
+  margin: 0 0 24px -35px;
+}
+.button-cover, .knobs, .layer
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.button
+{
+  position: relative;
+  width: 74px;
+  height: 36px;
+  margin: 0 auto 0 auto;
+  overflow: hidden;
+}
+
+.button.r, .button.r .layer
+{
+  border-radius: 100px;
+}
+
+.checkbox
+{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.knobs
+{
+  z-index: 2;
+}
+
+.layer
+{
+  width: 100%;
+  background-color: #dfe3e4;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+#button-1 .knobs:before
+{
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 20px;
+  height: 10px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 9px 4px;
+  background-color: #949ca0;
+  border-radius: 50%;
+  transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+
+#button-1 .checkbox:checked + .knobs:before
+{
+  content: '';
+  left: 42px;
+  background-color: #278215;
+}
+
+#button-1 .checkbox:checked ~ .layer
+{
+  background-color: #96c58c33;
+}

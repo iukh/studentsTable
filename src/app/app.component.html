@@ -1,0 +1,68 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h2>Welcome to the Students Table</h2>
+</div>
+<div class="filter">
+  <div class="input">
+    <p>Start Date:</p>
+    <input type="date" [(ngModel)]="dobMin">
+  </div>
+  <div class="input">
+    <p>End Date:</p>
+    <input type="date" [(ngModel)]="dobMin">
+  </div>
+  <div class="input">
+    <p>Min GPA</p>
+    <input type="text" value="0" placeholder="GPA MAX" [(ngModel)]="gpaMin">
+  </div>
+  <div class="input">
+    <p>Max GPA</p>
+    <input type="text" value="5" placeholder="GPA MAX" [(ngModel)]="gpaMax">
+  </div>
+</div>
+<div class="search">
+  <input type="search" placeholder="Enter student name" [(ngModel)]=tmpSearchInput>
+  <button type="button" name="button" (click)="studentSearch()">Search</button>
+  <div class="textFilter">
+    Students with GPA<3
+  </div>
+  <div class="gpaFilter">
+    <div class="button-cover" (click)="changeSwitchValue()">
+      <div class="button r" id="button-1">
+        <input type="checkbox" class="checkbox">
+        <div class="knobs"></div>
+        <div class="layer"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Middle Name</th>
+    <th (click)="sortByLastName()">Last Name&#9662;</th>
+    <th>Date of Birth</th>
+    <th (click)="sortByGPA()">GPA &#9662;</th><th></th>
+  </tr>
+  <tr *ngFor = "let student of students | studentsFilter: gpaMin : gpaMax : dobMin : dobMax" style.background-color = "{{student.gradePointAverage < 3 && switchEnabled==true ? '#f7dcdf' : ''}}" style.background-color = "{{student.firstName == searchInput || student.lastName == searchInput ? '#f7dcdf' : ''}}">
+    <!-- <tr *ngFor = "let student of studentFilter(students)" style.background-color = "{{student.gradePointAverage < 3 && switchEnabled==true ? '#f7dcdf' : ''}}" style.background-color = "{{student.firstName == searchInput || student.lastName == searchInput ? '#f7dcdf' : ''}}"> -->
+    <ng-container *ngIf = student.isActive>
+      <td>{{student.firstName}}</td>
+      <td>{{student.middleName}}</td>
+      <td>{{student.lastName}}</td>
+      <td>{{student.dateOfBirthday | date:"dd/MM/yyyy"}}</td>
+      <td>{{student.gradePointAverage}}</td>
+      <td><button type="button" name="button" (click)="showPopUp(student)">Delete</button>
+      </td>
+    </ng-container>
+  </tr>
+</table>
+
+<ng-container *ngIf = "isPopUpActive">
+  <div class="overlay"></div>
+  <div class="confirmationPopOp">
+    <p>Are you sure you want to delete the student?</p>
+    <button type="button" name="button" (click)="deleteStudent()">Delete</button>
+    <button type="button" name="button" class="cancel" (click)="closePopUp()">Cancel</button>
+  </div>
+</ng-container>
