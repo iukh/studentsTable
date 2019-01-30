@@ -1,3 +1,6 @@
+h3 {
+  margin: 5px;
+}
 .filter {
   text-align: center;
   margin: 10px auto;
@@ -89,7 +92,8 @@ button {
 }
 
 .cancel {
-  background-color: grey;
+  background-color: #dfe3e4;
+  color: black;
 }
 p {
   font-size: 20px;
@@ -194,4 +198,59 @@ p {
 #button-1 .checkbox:checked ~ .layer
 {
   background-color: #96c58c33;
+}
+
+
+form {
+  border: 1px solid black;
+  width: 300px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+form input {
+  padding: 10px;
+  display: block;
+  margin: 0 auto;
+  width: 260px;
+  margin-bottom: 10px;
+}
+form label {
+  margin-left: 10px;
+}
+form button {
+  width: 260px;
+  background-color: #96c58c33;
+  color: black;
+}
+
+form button:disabled {
+  background-color: #dfe3e4;
+  color: black;
+  border: 1px solid black;
+}
+.addStudentButton {
+  background-color: #96c58c33;
+  color: black;
+  border: 1px solid black;
+  margin: 0 auto;
+  display: inline-block;
+  width: 200px;
+}
+.studentForm {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.inputValidationError {
+  background-color: #f7dcdf;
+  color: red;
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+  padding: 0;
+}
+
+div .form-group {
+  padding: 10px;
 }
