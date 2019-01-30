@@ -124,14 +124,22 @@ Last Name is requiered
 <div class="studentForm">
   <button type="button" name="button" class="addStudentButton" (click) = activateForm()>Add a new Student</button>
   <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" *ngIf = "isFormActive">
-    <div formGroupName="name">
+    <div formGroupName="name" required>
       <label>First Name</label>
       <input type="text" class="form-control" formControlName="firstName">
       <label>Last Name</label>
       <input type="text" class="form-control" formControlName="lastName">
       <label>Middle Name</label>
       <input type="text" class="form-control" formControlName="middleName">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.rrors.required">
+            Name is required.
+          </div>
+        </div>
     </div>
+
+
+
     <label>Date of Birthday</label>
     <input type="date" class="form-control"  [value]="studentForm.get('dateOfBirthday').value |  date: 'yyyy-MM-dd'" formControlName="dateOfBirthday">
     <label>Grade point average</label>
