@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StudentsService } from './students.service';
 import { StudentsFilterPipe } from './students-filter.pipe';
+import { StudentFormComponent } from './student-form/student-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentsFilterPipe
+    StudentsFilterPipe,
+    StudentFormComponent
   ],
   imports: [
     BrowserModule,
