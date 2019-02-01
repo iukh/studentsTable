@@ -2,66 +2,6 @@
 <div style="text-align:center">
   <h2>Welcome to the Students Table</h2>
 </div>
-<!-- <div class="studentForm">
-<button type="button" name="button" class="addStudentButton" (click) = activateForm()>Add a new Student</button>
-<form  (ngSubmit)="createStudent()"  *ngIf = "isFormActive">
-<div class="">
-<h3>Student Registration</h3>
-</div>
-<hr>
-<br>
-<div class="form-group">
-<label>First Name</label>
-<input class="form-control">
-<ng-container *ngIf="firstName.dirty">
-<div class="inputValidationError" *ngIf="firstName.errors.required">
-First Name is requiered
-</div>
-</ng-container>
-</div>
-<div class="form-group">
-<label>Middle Name</label>
-<input class="form-control"
-name="middleName"
-#middleName="ngModel"
-[(ngModel)]="newStudent.middleName"
-required>
-<ng-container *ngIf="middleName.dirty">
-<div class="inputValidationError" *ngIf="middleName.errors.required">
-Middle Name is requiered
-</div>
-</ng-container>
-</div>
-<div class="form-group">
-<label>Last Name</label>
-<input class="form-control"
-name="lastName"
-#lastName="ngModel"
-[(ngModel)]="newStudent.lastName"
-required>
-<ng-container *ngIf="lastName.dirty">
-<div class="inputValidationError" *ngIf="lastName.errors.required">
-Last Name is requiered
-</div>
-</ng-container>
-</div>
-<div class="form-group">
-<label>Date of Birth</label>
-<input type="date" class="form-control" name="dateOfBirthday" >
-</div>
-<div class="form-group">
-<label>GPA</label>
-<input type="text" class="form-control" name="gradePointAverage" >
-</div>
-<button type="submit" [disabled]="firstName.invalid && lastName.invalid && middleName.invalid"> Create</button>
-</form>
-</div> -->
-
-
-
-
-
-
 <div class="filter">
   <div class="input">
     <p>Start Date:</p>
@@ -115,38 +55,12 @@ Last Name is requiered
       <td>{{student.dateOfBirthday | date:"dd/MM/yyyy"}}</td>
       <td>{{student.gradePointAverage}}</td>
       <td><button type="button" name="button" (click)="showPopUp(student)">Delete</button>
-        <button type="button" name="button" class="cancel" (click)="studentEdit(student, i)">Edit</button>
+        <button type="button" name="button" class="cancel" (click)="editStudent(student, i)">Edit</button>
       </td>
     </ng-container>
   </tr>
 </table>
-
-<div class="studentForm">
-  <button type="button" name="button" class="addStudentButton" (click) = activateForm()>Add a new Student</button>
-  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" *ngIf = "isFormActive">
-    <div formGroupName="name" required>
-      <label>First Name</label>
-      <input type="text" class="form-control" formControlName="firstName">
-      <label>Last Name</label>
-      <input type="text" class="form-control" formControlName="lastName">
-      <label>Middle Name</label>
-      <input type="text" class="form-control" formControlName="middleName">
-      <div *ngIf="name.invalid && (name.dirty || name.touched)">
-          <div *ngIf="name.rrors.required">
-            Name is required.
-          </div>
-        </div>
-    </div>
-
-
-
-    <label>Date of Birthday</label>
-    <input type="date" class="form-control"  [value]="studentForm.get('dateOfBirthday').value |  date: 'yyyy-MM-dd'" formControlName="dateOfBirthday">
-    <label>Grade point average</label>
-    <input type="text" class="form-control" formControlName="gradePointAverage" >
-    <button type="submit" [disabled]="!studentForm.valid">Submit</button>
-  </form>
-</div>
+<app-student-form></app-student-form>
 
 <ng-container *ngIf = "isPopUpActive">
   <div class="overlay"></div>
