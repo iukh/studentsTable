@@ -16,6 +16,7 @@ const students: Student[] = [
   providedIn: 'root'
 })
 export class StudentsService {
+  studentId:number;
   constructor() { }
   getStudents(): Student[] {
     return students;
