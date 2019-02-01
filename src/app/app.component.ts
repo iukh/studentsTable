@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {ViewChild, AfterViewInit } from '@angular/core';
 import { Student } from './student';
 import { StudentsService } from './students.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentsFilterPipe } from './students-filter.pipe';
+import { StudentFormComponent } from './student-form/student-form.component';
 
 @Component({
   selector: 'app-root',
@@ -20,31 +20,13 @@ export class AppComponent implements OnInit {
   tmpSearchInput: string = "";
   gpaMin: number;
   gpaMax: number;
-  isFormActive: boolean = false;
-  studentForm: FormGroup;
-  currentStudentIndex: number = null;
-
-  initForm() {
-    this.studentForm = this.fb.group({
-      name: this.fb.group({
-        firstName: null,
-        lastName: null,
-        middleName: null
-      }, [
-      Validators.required,
-      Validators.minLength(4)]),
-      dateOfBirthday: null,
-      gradePointAverage: null,
-      isActive: "true"
-    });
-  }
-
   constructor(
-    private studentsService: StudentsService,
-    private fb: FormBuilder) { }
+    private studentsService: StudentsService
+  ) { }
+  @ViewChild(StudentFormComponent) studentForm;
+
   ngOnInit() {
     this.students = this.studentsService.getStudents();
-    this.initForm();
   }
   changeSwitchValue() {
     this.switchEnabled = !this.switchEnabled;
@@ -78,38 +60,7 @@ export class AppComponent implements OnInit {
   sortByLastName() {
     this.students.sort(this.compareLastName);
   }
-  activateForm() {
-    this.isFormActive =  !this.isFormActive;
-    this.gpaMax = 5;
+  editStudent(student, item) {
+    this.studentForm.editStudent(student,item);
   }
-  onSubmit() {
-    this.currentStudent = new Student(this.studentForm.value.name.firstName,
-                                  this.studentForm.value.name.lastName,
-                                  this.studentForm.value.name.middleName,
-                                  this.studentForm.value.dateOfBirthday,
-                                 this.studentForm.value.gradePointAverage,true);
-    if (this.currentStudentIndex) {
-      this.students[this.currentStudentIndex] = this.currentStudent;
-      this.isFormActive = false;
-    } else {
-      this.students.push(this.currentStudent);
-    }
-    this.gpaMax = this.gpaMax + 1;
-    this.studentForm.reset();
-    this.currentStudentIndex = null;
-  }
-  studentEdit(student, i) {
-  this.activateForm();
-  this.currentStudentIndex = i;
-  this.studentForm.setValue({
-    name: {
-      firstName: student.firstName,
-      lastName: student.lastName,
-      middleName: student.middleName
-    },
-    dateOfBirthday: student.dateOfBirthday,
-    gradePointAverage: student.gradePointAverage,
-    isActive: "true"
-  });
-}
 }
